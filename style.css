@@ -470,9 +470,8 @@ cursor:pointer;
 }
 
 /* DROPDOWN MENU */
-
 .dropdown-menu{
-position:fixed;   /* change from absolute */
+position:absolute;
 top:70px;
 right:40px;
 
@@ -484,6 +483,7 @@ display:none;
 flex-direction:column;
 
 box-shadow:0 10px 25px rgba(0,0,0,0.4);
+z-index:999;
 }
 
 /* SHOW MENU */
@@ -515,12 +515,10 @@ padding:15px 40px;
 background:#140018;
 color:white;
 
-position:fixed;   /* important */
+position:sticky;
 top:0;
-left:0;
-width:100%;
-
 z-index:1000;
+width:100%;
 }
 
 .logo{
@@ -600,3 +598,4 @@ display:flex;
 body{
 padding-top:80px;
 }
+
