@@ -20,23 +20,19 @@ localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
 updateCartCount();
 
-showNotification();
-
-}
-
-/* CART NOTIFICATION */
-
-function showNotification(){
+/* NOTIFICATION */
 
 const note = document.getElementById("cartNotification");
 
-if(!note) return;
+if(note){
 
 note.style.display="block";
 
-setTimeout(()=>{
+setTimeout(function(){
 note.style.display="none";
 },2000);
+
+}
 
 }
 
@@ -119,3 +115,4 @@ updateCartCount();
 
 updateCart();
 updateCartCount();
+
