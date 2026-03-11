@@ -137,7 +137,10 @@ window.location.href="index.html";
 function toggleMenu(){
 
 const menu = document.getElementById("menu");
+const burger = document.querySelector(".hamburger");
+
 menu.classList.toggle("menu-open");
+burger.classList.toggle("active");
 
 }
 
@@ -148,6 +151,7 @@ updateCart();
 updateCartCount();
 
 });
+
 
 
 
