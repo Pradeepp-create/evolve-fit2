@@ -92,12 +92,12 @@ totalDisplay.innerText = total;
 // CART COUNT
 function updateCartCount(){
 
-let cart = getCart();
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-const count = document.getElementById("cartCount");
+let countElement = document.getElementById("cartCount");
 
-if(count){
-count.innerText = cart.length;
+if(countElement){
+countElement.innerText = cart.length;
 }
 
 }
@@ -120,4 +120,9 @@ note.style.display="none";
 // INITIAL LOAD
 updateCart();
 updateCartCount();
+
+document.addEventListener("DOMContentLoaded", function(){
+updateCartCount();
+updateCart();
+});
 
