@@ -46,7 +46,6 @@ updateCartCount();
 }
 
 /* UPDATE CART PAGE */
-
 function updateCart(){
 
 if(!cart) return;
@@ -61,9 +60,10 @@ let li = document.createElement("li");
 
 total += item.price * item.qty;
 
-li.innerHTML =
-`${item.name} - ₹${item.price} x ${item.qty}
-<button onclick="removeItem(${index})">Remove</button>`;
+li.innerHTML = `
+${item.name} - ₹${item.price} x ${item.qty}
+<button onclick="removeItem(${index})">Remove</button>
+`;
 
 cart.appendChild(li);
 
@@ -79,10 +79,14 @@ totalDisplay.innerText = total;
 
 function removeItem(index){
 
-cartItems.splice(index,1);
+cartItems.splice(index,1);   // remove item from array
 
-saveCart();
+localStorage.setItem("cartItems", JSON.stringify(cartItems)); // update storage
 
+updateCart();       // refresh cart display
+updateCartCount();  // refresh cart number
+
+}
 }
 
 /* CART COUNT */
@@ -140,5 +144,6 @@ updateCart();
 updateCartCount();
 
 });
+
 
 
