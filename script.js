@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function(){
 
 let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
@@ -16,9 +16,9 @@ if(item){
 item.qty += 1;
 }else{
 cartItems.push({
-name: name,
-price: price,
-qty: 1
+name:name,
+price:price,
+qty:1
 });
 }
 
@@ -32,14 +32,14 @@ showNotification();
 function buyNow(name, price){
 
 cartItems = [{
-name: name,
-price: price,
-qty: 1
+name:name,
+price:price,
+qty:1
 }];
 
 saveCart();
 
-window.location.href = "payment.html";
+window.location.href="payment.html";
 
 }
 
@@ -54,26 +54,25 @@ updateCartCount();
 
 }
 
-/* UPDATE CART PAGE */
+/* UPDATE CART */
 
 function updateCart(){
 
 if(!cart) return;
 
-cart.innerHTML = "";
+cart.innerHTML="";
 
-let total = 0;
+let total=0;
 
 cartItems.forEach((item,index)=>{
 
-let li = document.createElement("li");
+let li=document.createElement("li");
 
 total += item.price * item.qty;
 
-li.innerHTML = `
-${item.name} - ₹${item.price} x ${item.qty}
-<button onclick="removeItem(${index})">Remove</button>
-`;
+li.innerHTML =
+item.name + " - ₹" + item.price + " x " + item.qty +
+` <button onclick="removeItem(${index})">Remove</button>`;
 
 cart.appendChild(li);
 
@@ -101,13 +100,13 @@ function updateCartCount(){
 
 if(!cartCount) return;
 
-let count = 0;
+let count=0;
 
 cartItems.forEach(item=>{
 count += item.qty;
 });
 
-cartCount.innerText = count;
+cartCount.innerText=count;
 
 }
 
@@ -115,14 +114,14 @@ cartCount.innerText = count;
 
 function showNotification(){
 
-const note = document.getElementById("cartNotification");
+const note=document.getElementById("cartNotification");
 
 if(!note) return;
 
-note.style.display = "block";
+note.style.display="block";
 
 setTimeout(()=>{
-note.style.display = "none";
+note.style.display="none";
 },2000);
 
 }
@@ -135,21 +134,21 @@ e.preventDefault();
 
 alert("Order placed successfully 🎉");
 
-cartItems = [];
+cartItems=[];
 
 saveCart();
 
 }
 
-/* INITIAL LOAD */
+/* LOAD */
 
 updateCart();
 updateCartCount();
 
-/* MAKE FUNCTIONS GLOBAL FOR BUTTONS */
+/* MAKE BUTTON FUNCTIONS GLOBAL */
 
-window.addToCart = addToCart;
-window.buyNow = buyNow;
-window.removeItem = removeItem;
+window.addToCart=addToCart;
+window.buyNow=buyNow;
+window.removeItem=removeItem;
 
 });
