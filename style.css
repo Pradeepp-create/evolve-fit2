@@ -159,3 +159,74 @@ padding:12px 20px;
 display:none;
 border-radius:6px;
 }
+
+/* CART PAGE */
+
+.cart-page{
+text-align:center;
+padding:60px;
+}
+
+#cart{
+list-style:none;
+padding:0;
+max-width:500px;
+margin:auto;
+}
+
+#cart li{
+background:#1c1c2a;
+margin:10px 0;
+padding:15px;
+border-radius:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+#cart button{
+background:#ff00c8;
+border:none;
+padding:8px 12px;
+color:white;
+cursor:pointer;
+}
+
+.checkoutBtn{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#ff00c8;
+color:white;
+cursor:pointer;
+}
+
+/* PAYMENT PAGE */
+
+.payment-page{
+text-align:center;
+padding:60px;
+}
+
+.payment-page form{
+display:flex;
+flex-direction:column;
+gap:12px;
+max-width:400px;
+margin:auto;
+}
+
+.payment-page input,
+.payment-page select{
+padding:10px;
+border:none;
+border-radius:5px;
+}
+
+.payBtn{
+padding:12px;
+background:#ff00c8;
+border:none;
+color:white;
+cursor:pointer;
+}
