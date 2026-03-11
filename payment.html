@@ -1,55 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Payment</title>
+<title>Payment | EVOLVEFIT</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>Payment</h1>
+<header>
+
+<h2>EVOLVEFIT</h2>
+
+<ul class="menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#mens">Men</a></li>
+<li><a href="index.html#womens">Women</a></li>
+<li><a href="cart.html">Cart 🛒 <span id="cartCount">0</span></a></li>
+</ul>
+
+</header>
+
+<section class="payment-page">
+
+<h1>Payment Details</h1>
 
 <form onsubmit="completePayment(event)">
 
-<select id="paymentMethod" required>
+<input type="text" placeholder="Full Name" required>
 
-<option value="">Select Payment</option>
-<option value="upi">UPI</option>
-<option value="card">Card</option>
-<option value="cod">Cash on Delivery</option>
+<input type="text" placeholder="Address" required>
 
+<input type="text" placeholder="Phone Number" required>
+
+<select required>
+<option value="">Select Payment Method</option>
+<option>Cash on Delivery</option>
+<option>UPI</option>
+<option>Credit / Debit Card</option>
 </select>
 
-<br><br>
-
-<button type="submit">Confirm Order</button>
+<button type="submit" class="payBtn">Place Order</button>
 
 </form>
 
+</section>
+
 <footer class="footer">
-    <div class="footer-container">
 
-        <div>
-            <h3>Contact Us</h3>
-            <p>📞 +91 9876543210</p>
-            <p>📧 support@evolvefit.com</p>
-        </div>
+<div class="footer-container">
 
-        <div>
-            <h3>Store Address</h3>
-            <p>📍 EVOLVEFIT Store</p>
-            <p>123 Fitness Street</p>
-            <p>Chennai, Tamil Nadu, India</p>
-        </div>
+<div>
+<h3>Contact Us</h3>
+<p>📞 +91 9876543210</p>
+<p>📧 support@evolvefit.com</p>
+</div>
 
-    </div>
+<div>
+<h3>Store Address</h3>
+<p>📍 EVOLVEFIT Store</p>
+<p>123 Fitness Street</p>
+<p>Chennai, Tamil Nadu, India</p>
+</div>
 
-    <p class="footer-bottom">© 2026 EVOLVEFIT. All Rights Reserved.</p>
+</div>
+
+<p class="footer-bottom">© 2026 EVOLVEFIT</p>
+
 </footer>
-  
+
 <script src="script.js"></script>
 
 </body>
 </html>
-
-
