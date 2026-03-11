@@ -134,6 +134,13 @@ updateCartCount();
 
 window.location.href="index.html";
 }
+function toggleMenu(){
+
+let menu = document.getElementById("menu");
+
+menu.classList.toggle("showMenu");
+
+}
 // RUN AFTER PAGE LOAD
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -141,5 +148,7 @@ updateCart();
 updateCartCount();
 
 });
+
+
 
 
