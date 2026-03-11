@@ -21,6 +21,9 @@ price: price
 });
 
 saveCart(cart);
+
+updateCartCount();   // add this line
+
 showNotification();
 
 }
@@ -34,6 +37,8 @@ price:price
 }];
 
 saveCart(cart);
+
+updateCartCount();   // add this
 
 window.location.href="payment.html";
 
@@ -115,3 +120,4 @@ note.style.display="none";
 // INITIAL LOAD
 updateCart();
 updateCartCount();
+
