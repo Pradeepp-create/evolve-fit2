@@ -10,6 +10,8 @@ const cartCount = document.getElementById("cartCount");
 
 function addToCart(name, price){
 
+let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
 let item = cartItems.find(p => p.name === name);
 
 if(item){
@@ -22,11 +24,13 @@ qty:1
 });
 }
 
-saveCart();
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+updateCart();
+updateCartCount();
 showNotification();
 
 }
-
 /* BUY NOW */
 
 function buyNow(name, price){
@@ -61,7 +65,12 @@ updateCartCount();
 
 function updateCart(){
 
+const cart = document.getElementById("cart");
+const totalDisplay = document.getElementById("total");
+
 if(!cart) return;
+
+let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
 cart.innerHTML="";
 
@@ -90,6 +99,8 @@ totalDisplay.innerText = total;
 /* REMOVE ITEM */
 
 function removeItem(index){
+
+let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
 cartItems.splice(index,1);
 
@@ -158,4 +169,5 @@ window.buyNow=buyNow;
 window.removeItem=removeItem;
 
 });
+
 
