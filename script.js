@@ -49,6 +49,9 @@ function saveCart(){
 
 localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
+/* reload fresh cart from storage */
+cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
 updateCart();
 updateCartCount();
 
@@ -90,7 +93,10 @@ function removeItem(index){
 
 cartItems.splice(index,1);
 
-saveCart();
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+updateCart();
+updateCartCount();
 
 }
 
@@ -152,3 +158,4 @@ window.buyNow=buyNow;
 window.removeItem=removeItem;
 
 });
+
