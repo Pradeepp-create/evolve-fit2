@@ -6,12 +6,13 @@ const cartCount = document.getElementById("cartCount");
 
 /* ADD TO CART */
 
+
 function addToCart(name, price){
 
 let existing = cartItems.find(item => item.name === name);
 
 if(existing){
-existing.qty += 1;
+existing.qty = (existing.qty || 1) + 1;
 }else{
 cartItems.push({name:name, price:price, qty:1});
 }
@@ -19,6 +20,9 @@ cartItems.push({name:name, price:price, qty:1});
 localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
 updateCartCount();
+showNotification();
+
+}
 
 /* NOTIFICATION */
 
@@ -47,12 +51,14 @@ let total=0;
 
 cartItems.forEach((item,index)=>{
 
-total += item.price * item.qty;
+let qty = item.qty || 1;
+
+total += item.price * qty;
 
 const li=document.createElement("li");
 
-li.innerHTML=
-`${item.name} - ₹${item.price} x ${item.qty}
+li.innerHTML =
+`${item.name} - ₹${item.price} x ${qty}
 <button onclick="removeItem(${index})">Remove</button>`;
 
 cart.appendChild(li);
@@ -116,3 +122,12 @@ updateCartCount();
 updateCart();
 updateCartCount();
 
+function buyNow(name,price){
+
+cartItems = [{name:name, price:price, qty:1}];
+
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+window.location.href="payment.html";
+
+}
