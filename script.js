@@ -134,13 +134,17 @@ updateCartCount();
 
 window.location.href="index.html";
 }
+
 function toggleMenu(){
 
-let menu = document.getElementById("menu");
+const menu = document.getElementById("menu");
+const burger = document.querySelector(".hamburger");
 
-menu.classList.toggle("showMenu");
+menu.classList.toggle("menu-open");
+burger.classList.toggle("active");
 
 }
+
 // RUN AFTER PAGE LOAD
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -148,6 +152,7 @@ updateCart();
 updateCartCount();
 
 });
+
 
 
 
