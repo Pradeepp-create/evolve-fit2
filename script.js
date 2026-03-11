@@ -1,92 +1,80 @@
-document.addEventListener("DOMContentLoaded", function(){
-
-let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-const cart = document.getElementById("cart");
-const totalDisplay = document.getElementById("total");
-const cartCount = document.getElementById("cartCount");
-
-/* ADD TO CART */
-
-function addToCart(name, price){
-
-let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-let item = cartItems.find(p => p.name === name);
-
-if(item){
-item.qty += 1;
-}else{
-cartItems.push({
-name:name,
-price:price,
-qty:1
-});
+// LOAD CART
+function getCart(){
+return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
-localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-updateCart();
+// SAVE CART
+function saveCart(cart){
+localStorage.setItem("cart", JSON.stringify(cart));
 updateCartCount();
+updateCart();
+}
+
+// ADD TO CART
+function addToCart(name, price){
+
+let cart = getCart();
+
+cart.push({
+name: name,
+price: price
+});
+
+saveCart(cart);
 showNotification();
 
 }
-/* BUY NOW */
 
+// BUY NOW
 function buyNow(name, price){
 
-cartItems = [{
+let cart = [{
 name:name,
-price:price,
-qty:1
+price:price
 }];
 
-saveCart();
+saveCart(cart);
 
 window.location.href="payment.html";
 
 }
 
-/* SAVE CART */
+// REMOVE ITEM
+function removeItem(index){
 
-function saveCart(){
+let cart = getCart();
 
-localStorage.setItem("cartItems", JSON.stringify(cartItems));
+cart.splice(index,1);
 
-/* reload fresh cart from storage */
-cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-updateCart();
-updateCartCount();
+saveCart(cart);
 
 }
 
-/* UPDATE CART */
-
+// UPDATE CART PAGE
 function updateCart(){
 
-const cart = document.getElementById("cart");
+let cart = getCart();
+
+const cartList = document.getElementById("cart");
 const totalDisplay = document.getElementById("total");
 
-if(!cart) return;
+if(!cartList) return;
 
-let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+cartList.innerHTML = "";
 
-cart.innerHTML="";
+let total = 0;
 
-let total=0;
+cart.forEach((item,index)=>{
 
-cartItems.forEach((item,index)=>{
+let li = document.createElement("li");
 
-let li=document.createElement("li");
-
-total += item.price * item.qty;
+total += item.price;
 
 li.innerHTML =
-item.name + " - ₹" + item.price + " x " + item.qty +
-` <button onclick="removeItem(${index})">Remove</button>`;
+`${item.name} - ₹${item.price}
+<button onclick="removeItem(${index})">Remove</button>`;
 
-cart.appendChild(li);
+cartList.appendChild(li);
 
 });
 
@@ -96,42 +84,23 @@ totalDisplay.innerText = total;
 
 }
 
-/* REMOVE ITEM */
-
-function removeItem(index){
-
-let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-cartItems.splice(index,1);
-
-localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-updateCart();
-updateCartCount();
-
-}
-
-/* CART COUNT */
-
+// CART COUNT
 function updateCartCount(){
 
-if(!cartCount) return;
+let cart = getCart();
 
-let count=0;
+const count = document.getElementById("cartCount");
 
-cartItems.forEach(item=>{
-count += item.qty;
-});
-
-cartCount.innerText=count;
+if(count){
+count.innerText = cart.length;
+}
 
 }
 
-/* NOTIFICATION */
-
+// NOTIFICATION
 function showNotification(){
 
-const note=document.getElementById("cartNotification");
+const note = document.getElementById("cartNotification");
 
 if(!note) return;
 
@@ -143,31 +112,6 @@ note.style.display="none";
 
 }
 
-/* PAYMENT */
-
-function completePayment(e){
-
-e.preventDefault();
-
-alert("Order placed successfully 🎉");
-
-cartItems=[];
-
-saveCart();
-
-}
-
-/* LOAD */
-
+// INITIAL LOAD
 updateCart();
 updateCartCount();
-
-/* MAKE BUTTON FUNCTIONS GLOBAL */
-
-window.addToCart=addToCart;
-window.buyNow=buyNow;
-window.removeItem=removeItem;
-
-});
-
-
