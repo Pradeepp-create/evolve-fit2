@@ -472,16 +472,18 @@ cursor:pointer;
 /* DROPDOWN MENU */
 
 .dropdown-menu{
-list-style:none;
-background:#2b0033;
-position:absolute;
+position:fixed;   /* change from absolute */
 top:70px;
 right:40px;
+
+background:#22002a;
 width:200px;
-border-radius:8px;
-overflow:hidden;
+border-radius:10px;
 
 display:none;
+flex-direction:column;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 
 /* SHOW MENU */
@@ -512,8 +514,12 @@ justify-content:space-between;
 padding:15px 40px;
 background:#140018;
 color:white;
-position:sticky;
+
+position:fixed;   /* important */
 top:0;
+left:0;
+width:100%;
+
 z-index:1000;
 }
 
@@ -589,4 +595,8 @@ background:#ff00cc;
 }
 .menu-open{
 display:flex;
+}
+
+body{
+padding-top:80px;
 }
