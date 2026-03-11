@@ -112,6 +112,15 @@ note.style.display = "none";
 
 }
 
+function submitFeedback(e){
+
+e.preventDefault();
+
+alert("Thank you for your feedback! 💜");
+
+e.target.reset();
+
+}
 // RUN AFTER PAGE LOAD
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -119,3 +128,4 @@ updateCart();
 updateCartCount();
 
 });
+
