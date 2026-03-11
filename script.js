@@ -6,26 +6,37 @@ const cartCount = document.getElementById("cartCount");
 
 /* ADD TO CART */
 
-function addToCart(name,price){
+function addToCart(name, price){
 
 let existing = cartItems.find(item => item.name === name);
 
 if(existing){
-existing.qty++;
+existing.qty += 1;
 }else{
-cartItems.push({name,price,qty:1});
+cartItems.push({name:name, price:price, qty:1});
 }
 
-localStorage.setItem("cartItems",JSON.stringify(cartItems));
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
 updateCartCount();
 
-const note=document.getElementById("cartNotification");
+showNotification();
 
-if(note){
-note.style.display="block";
-setTimeout(()=>{note.style.display="none"},2000);
 }
+
+/* CART NOTIFICATION */
+
+function showNotification(){
+
+const note = document.getElementById("cartNotification");
+
+if(!note) return;
+
+note.style.display="block";
+
+setTimeout(()=>{
+note.style.display="none";
+},2000);
 
 }
 
@@ -44,10 +55,9 @@ total += item.price * item.qty;
 
 const li=document.createElement("li");
 
-li.innerHTML=`
-${item.name} - ₹${item.price} x ${item.qty}
-<button onclick="removeItem(${index})">Remove</button>
-`;
+li.innerHTML=
+`${item.name} - ₹${item.price} x ${item.qty}
+<button onclick="removeItem(${index})">Remove</button>`;
 
 cart.appendChild(li);
 
@@ -65,7 +75,7 @@ function removeItem(index){
 
 cartItems.splice(index,1);
 
-localStorage.setItem("cartItems",JSON.stringify(cartItems));
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
 updateCart();
 updateCartCount();
@@ -81,7 +91,7 @@ if(!cartCount) return;
 let count=0;
 
 cartItems.forEach(item=>{
-count+=item.qty;
+count += item.qty;
 });
 
 cartCount.innerText=count;
@@ -98,12 +108,14 @@ alert("Order placed successfully 🎉");
 
 cartItems=[];
 
-localStorage.setItem("cartItems",JSON.stringify(cartItems));
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
 updateCart();
 updateCartCount();
 
 }
+
+/* LOAD FUNCTIONS */
 
 updateCart();
 updateCartCount();
