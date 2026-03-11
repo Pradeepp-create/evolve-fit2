@@ -9,11 +9,18 @@
 
 <div id="cartNotification">Added to Cart 🛒</div>
 
-<header>
+<header class="header">
 
-<h2>EVOLVEFIT</h2>
+<h2 class="logo">EVOLVEFIT</h2>
 
-<ul class="menu">
+<input type="text" id="searchBar" placeholder="Search products..." onkeyup="searchProducts()">
+
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+</header>
+
+<!-- DROPDOWN MENU -->
+<ul class="dropdown-menu" id="menu">
 
 <li><a href="#">Home</a></li>
 <li><a href="#mens">Men</a></li>
@@ -21,8 +28,6 @@
 <li><a href="cart.html">Cart 🛒 <span id="cartCount">0</span></a></li>
 
 </ul>
-
-</header>
 
 <section class="hero">
 
@@ -140,6 +145,7 @@
 
 </body>
 </html>
+
 
 
 
