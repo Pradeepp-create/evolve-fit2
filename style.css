@@ -1,0 +1,315 @@
+/* ================= GOOGLE FONT ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f6f4fb;
+    color: #222;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    background: #2e1065;
+    padding: 18px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.logo {
+    color: white;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #FF00A8;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+#searchBar {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+/* ================= HERO ================= */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #2e1065, #5F259F 50%, #9d00ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,0,168,0.35), transparent 70%);
+    top: -200px;
+    left: -200px;
+    filter: blur(80px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 64px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #FF00A8;
+    padding: 14px 38px;
+    border-radius: 40px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(255,0,168,0.4);
+}
+
+.btn-outline {
+    border: 2px solid white;
+    padding: 14px 38px;
+    border-radius: 40px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: #5F259F;
+}
+
+/* ================= SECTION TITLE ================= */
+.category-title {
+    text-align: center;
+    margin: 80px 0 40px;
+    font-size: 34px;
+    color: #5F259F;
+    font-weight: 700;
+}
+
+/* ================= PRODUCTS GRID ================= */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 35px;
+    padding: 0 80px 100px;
+}
+
+.product {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.4s;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.product img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.product p {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF00A8;
+    margin-bottom: 15px;
+}
+
+.product button {
+    background: #5F259F;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.product button:hover {
+    background: #FF00A8;
+}
+
+/* ================= CART / PAYMENT / FEEDBACK ================= */
+.cart-section,
+.payment-section,
+.feedback-section {
+    background: white;
+    width: 80%;
+    margin: 70px auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.cart-section h2,
+.payment-section h2,
+.feedback-section h2 {
+    color: #5F259F;
+    margin-bottom: 20px;
+}
+
+#cart li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-btn,
+.payment-section button,
+.feedback-section button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    background: #5F259F;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.checkout-btn:hover,
+.payment-section button:hover,
+.feedback-section button:hover {
+    background: #FF00A8;
+}
+
+.payment-section input,
+.payment-section select,
+.feedback-section input,
+.feedback-section textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: #2e1065;
+    color: white;
+    padding: 50px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 25px;
+    opacity: 0.8;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .products {
+        padding: 0 20px 60px;
+    }
+
+    .cart-section,
+    .payment-section,
+    .feedback-section {
+        width: 95%;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+}
+.hero img,
+.hero button {
+    display: none !important;
+}
