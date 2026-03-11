@@ -12,7 +12,7 @@ function addToCart(name, price){
 let item = cartItems.find(p => p.name === name);
 
 if(item){
-item.qty += 1;
+item.qty = item.qty + 1;
 }else{
 cartItems.push({name:name, price:price, qty:1});
 }
@@ -140,4 +140,5 @@ updateCart();
 updateCartCount();
 
 });
+
 
