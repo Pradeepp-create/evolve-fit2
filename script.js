@@ -1,4 +1,4 @@
-// LOAD CART
+// GET CART FROM STORAGE
 function getCart(){
 return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -6,8 +6,8 @@ return JSON.parse(localStorage.getItem("cart")) || [];
 // SAVE CART
 function saveCart(cart){
 localStorage.setItem("cart", JSON.stringify(cart));
-updateCartCount();
 updateCart();
+updateCartCount();
 }
 
 // ADD TO CART
@@ -21,9 +21,6 @@ price: price
 });
 
 saveCart(cart);
-
-updateCartCount();   // add this line
-
 showNotification();
 
 }
@@ -32,15 +29,13 @@ showNotification();
 function buyNow(name, price){
 
 let cart = [{
-name:name,
-price:price
+name: name,
+price: price
 }];
 
 saveCart(cart);
 
-updateCartCount();   // add this
-
-window.location.href="payment.html";
+window.location.href = "payment.html";
 
 }
 
@@ -89,40 +84,38 @@ totalDisplay.innerText = total;
 
 }
 
-// CART COUNT
+// UPDATE CART COUNT
 function updateCartCount(){
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = getCart();
 
 let countElement = document.getElementById("cartCount");
 
 if(countElement){
-countElement.innerText = cart.length;
+countElement.textContent = cart.length;
 }
 
 }
 
-// NOTIFICATION
+// CART NOTIFICATION
 function showNotification(){
 
 const note = document.getElementById("cartNotification");
 
 if(!note) return;
 
-note.style.display="block";
+note.style.display = "block";
 
 setTimeout(()=>{
-note.style.display="none";
+note.style.display = "none";
 },2000);
 
 }
 
-// INITIAL LOAD
-updateCart();
-updateCartCount();
-
+// RUN AFTER PAGE LOAD
 document.addEventListener("DOMContentLoaded", function(){
-updateCartCount();
-updateCart();
-});
 
+updateCart();
+updateCartCount();
+
+});
