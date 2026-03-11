@@ -121,6 +121,19 @@ alert("Thank you for your feedback! 💜");
 e.target.reset();
 
 }
+
+function completePayment(e){
+
+e.preventDefault();
+
+alert("Order placed successfully 🎉");
+
+localStorage.removeItem("cart");
+
+updateCartCount();
+
+window.location.href="index.html";
+}
 // RUN AFTER PAGE LOAD
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -128,4 +141,5 @@ updateCart();
 updateCartCount();
 
 });
+
 
