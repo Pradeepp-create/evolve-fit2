@@ -505,3 +505,88 @@ text-decoration:none;
 background:#ff00cc;
 }
 
+.navbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 40px;
+background:#140018;
+color:white;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#ff00cc;
+}
+.nav-right{
+display:flex;
+align-items:center;
+gap:25px;
+}
+.cart-btn{
+text-decoration:none;
+color:white;
+background:linear-gradient(45deg,#ff00cc,#7b00ff);
+padding:8px 18px;
+border-radius:20px;
+font-weight:bold;
+}
+
+.cart-btn:hover{
+opacity:0.9;
+}
+.hamburger{
+width:28px;
+cursor:pointer;
+display:flex;
+flex-direction:column;
+gap:6px;
+}
+
+.hamburger span{
+height:3px;
+background:white;
+border-radius:2px;
+transition:0.3s;
+}
+.hamburger.active span:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
+}
+
+.hamburger.active span:nth-child(2){
+opacity:0;
+}
+
+.hamburger.active span:nth-child(3){
+transform:rotate(-45deg) translate(5px,-5px);
+}
+.dropdown-menu{
+position:absolute;
+top:70px;
+right:40px;
+background:#22002a;
+width:200px;
+border-radius:10px;
+display:none;
+flex-direction:column;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+overflow:hidden;
+}
+
+.dropdown-menu a{
+padding:14px;
+text-decoration:none;
+color:white;
+border-bottom:1px solid #333;
+}
+
+.dropdown-menu a:hover{
+background:#ff00cc;
+}
+.menu-open{
+display:flex;
+}
