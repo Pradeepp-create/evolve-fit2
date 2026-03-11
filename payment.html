@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Payment</h1>
+
+<form onsubmit="completePayment(event)">
+
+<label>Select Payment</label>
+
+<select id="paymentMethod">
+<option value="">Choose</option>
+<option value="cod">Cash On Delivery</option>
+<option value="upi">UPI</option>
+<option value="card">Card</option>
+</select>
+
+<br><br>
+
+<button type="submit">Pay Now</button>
+
+</form>
+
+<script src="script.js"></script>
+
+</body>
+</html>
