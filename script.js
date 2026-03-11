@@ -1,44 +1,51 @@
 let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-let total = 0;
 
 const cart = document.getElementById("cart");
 const totalDisplay = document.getElementById("total");
-const paymentSection = document.getElementById("payment-section");
-/* ================= ADD TO CART ================= */
+const cartCount = document.getElementById("cartCount");
 
-function addToCart(name, price) {
+/* ADD TO CART */
 
-cartItems.push({name,price});
+function addToCart(name,price){
 
-localStorage.setItem("cartItems", JSON.stringify(cartItems));
+let existing = cartItems.find(item => item.name === name);
 
-const note = document.getElementById("cartNotification");
+if(existing){
+existing.qty++;
+}else{
+cartItems.push({name,price,qty:1});
+}
 
+localStorage.setItem("cartItems",JSON.stringify(cartItems));
+
+updateCartCount();
+
+const note=document.getElementById("cartNotification");
+
+if(note){
 note.style.display="block";
-
-setTimeout(()=>{
-note.style.display="none";
-},2000);
+setTimeout(()=>{note.style.display="none"},2000);
+}
 
 }
 
+/* UPDATE CART PAGE */
 
-/* ================= UPDATE CART ================= */
-function updateCart() {
+function updateCart(){
 
-if(!cart || !totalDisplay) return;
+if(!cart) return;
 
-cart.innerHTML = "";
-total = 0;
+cart.innerHTML="";
+let total=0;
 
-cartItems.forEach((item, index) => {
+cartItems.forEach((item,index)=>{
 
-total += item.price;
+total += item.price * item.qty;
 
-const li = document.createElement("li");
+const li=document.createElement("li");
 
-li.innerHTML = `
-<span>${item.name} - ₹${item.price}</span>
+li.innerHTML=`
+${item.name} - ₹${item.price} x ${item.qty}
 <button onclick="removeItem(${index})">Remove</button>
 `;
 
@@ -46,81 +53,57 @@ cart.appendChild(li);
 
 });
 
-totalDisplay.innerText = total;
+if(totalDisplay){
+totalDisplay.innerText=total;
+}
 
 }
 
-/* ================= REMOVE ITEM ================= */
-function removeItem(index) {
+/* REMOVE ITEM */
+
+function removeItem(index){
 
 cartItems.splice(index,1);
 
-localStorage.setItem("cartItems", JSON.stringify(cartItems));
+localStorage.setItem("cartItems",JSON.stringify(cartItems));
 
 updateCart();
+updateCartCount();
 
 }
-/* ================= SHOW PAYMENT ================= */
-function showPayment() {
 
-if(!paymentSection) return;
+/* CART COUNT */
 
-if (cartItems.length === 0) {
-alert("Your cart is empty!");
-return;
+function updateCartCount(){
+
+if(!cartCount) return;
+
+let count=0;
+
+cartItems.forEach(item=>{
+count+=item.qty;
+});
+
+cartCount.innerText=count;
+
 }
 
-paymentSection.style.display = "block";
-paymentSection.scrollIntoView({ behavior: "smooth" });
+/* PAYMENT */
 
-}
-/* ================= COMPLETE PAYMENT ================= */
-function completePayment(event) {
-    event.preventDefault();
+function completePayment(e){
 
-    const method = document.getElementById("paymentMethod").value;
+e.preventDefault();
 
-    if (!method) {
-        alert("Please select payment method");
-        return;
-    }
+alert("Order placed successfully 🎉");
 
-    if (method === "cod") {
-        alert("Order placed successfully! Pay on Delivery 🚚");
-    } else if (method === "upi") {
-        alert("UPI Payment Successful 🎉");
-    } else {
-        alert("Card Payment Successful 💳");
-    }
+cartItems=[];
 
-    cartItems = [];
-    updateCart();
-    paymentSection.style.display = "none";
-}
+localStorage.setItem("cartItems",JSON.stringify(cartItems));
 
-/* ================= SEARCH ================= */
-function searchProducts() {
-    const input = document.getElementById("searchBar").value.toLowerCase();
-    const products = document.querySelectorAll(".product");
-
-    products.forEach(product => {
-        const name = product.querySelector("h2").innerText.toLowerCase();
-        product.style.display = name.includes(input) ? "block" : "none";
-    });
-}
-
-/* ================= FEEDBACK ================= */
-function submitFeedback(event) {
-    event.preventDefault();
-    alert("Thank you for your feedback ❤️");
-    event.target.reset();
-}
-function goToPayment(){
-window.location.href="payment.html";
-}
-function toggleMenu(){
-const menu = document.getElementById("menu");
-menu.classList.toggle("show");
-}
-note.style.display="block";
 updateCart();
+updateCartCount();
+
+}
+
+updateCart();
+updateCartCount();
