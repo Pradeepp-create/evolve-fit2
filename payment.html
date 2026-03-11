@@ -11,18 +11,18 @@
 
 <form onsubmit="completePayment(event)">
 
-<label>Select Payment</label>
+<select id="paymentMethod" required>
 
-<select id="paymentMethod">
-<option value="">Choose</option>
-<option value="cod">Cash On Delivery</option>
+<option value="">Select Payment</option>
 <option value="upi">UPI</option>
 <option value="card">Card</option>
+<option value="cod">Cash on Delivery</option>
+
 </select>
 
 <br><br>
 
-<button type="submit">Pay Now</button>
+<button type="submit">Confirm Order</button>
 
 </form>
 
