@@ -1,170 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>EVOLVEFIT SHOP</title>
-    <link rel="stylesheet" href="style.css">
+<title>EVOLVEFIT</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+<div id="cartNotification">Added to Cart 🛒</div>
 
 <header>
 
-<h2 class="logo">EVOLVEFIT</h2>
+<h2>EVOLVEFIT</h2>
 
-<div class="menu-icon" onclick="toggleMenu()">☰</div>
-
-<ul class="menu" id="menu">
+<ul class="menu">
 
 <li><a href="#">Home</a></li>
 <li><a href="#mens">Men</a></li>
 <li><a href="#womens">Women</a></li>
-<li><a href="cart.html">Cart</a></li>
-<li><a href="#feedback-section">Feedback</a></li>
+<li><a href="cart.html">Cart 🛒 <span id="cartCount">0</span></a></li>
 
 </ul>
 
 </header>
-<section class="hero">
 
-    <div class="hero-content">
+<h1>Products</h1>
 
-        <span class="hero-tag">NEW SEASON DROP</span>
+<section class="products">
 
-        <h1>
-            Elevate Your <span class="highlight">Street wear</span>
-        </h1>
+<div class="product">
+<h3>Oversized Hoodie</h3>
+<p>₹499</p>
+<button onclick="addToCart('Oversized Hoodie',499)">Add to Cart</button>
+</div>
 
-        <p>
-            Premium fits. Bold designs. Built for confidence.
-        </p>
+<div class="product">
+<h3>T Shirt</h3>
+<p>₹449</p>
+<button onclick="addToCart('T Shirt',449)">Add to Cart</button>
+</div>
 
-        <div class="hero-buttons">
-            <a href="#mens" class="btn-primary">Shop Men</a>
-            <a href="#womens" class="btn-outline">Shop Women</a>
-        </div>
-
-    </div>
+<div class="product">
+<h3>Shoes</h3>
+<p>₹999</p>
+<button onclick="addToCart('Shoes',999)">Add to Cart</button>
+</div>
 
 </section>
-<!-- MEN SECTION -->
-<section id="mens">
-    <h2 class="category-title">Men Collection</h2>
-    <div class="products">
-
-        <div class="product"><img src="images/Oversized Hoodie.jpg"><h2>Oversized Hoodie</h2><p>₹499</p><button onclick="addToCart('Oversized Hoodie',499)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/T-Shirt.jpg"><h2>T-Shirt</h2><p>₹449</p><button onclick="addToCart('T-Shirt',449)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Shoes.jpg"><h2>Shoes</h2><p>₹499</p><button onclick="addToCart('Shoes',499)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Track Pants.jpg"><h2>Track Pant</h2><p>₹699</p><button onclick="addToCart('Track Pant',699)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Sports Cap.jpg"><h2>Sports Cap</h2><p>₹150</p><button onclick="addToCart('Sports Cap',150)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Jersey.jpg"><h2>Jersey</h2><p>₹1199</p><button onclick="addToCart('Jersey',1199)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Casual Shirt.jpg"><h2>Casual Shirt</h2><p>₹749</p><button onclick="addToCart('Casual Shirt',749)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Smart Fitness Watch.jpg"><h2>Smart Fitness Watch</h2><p>₹2999</p><button onclick="addToCart('Smart Fitness Watch',2999)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Pants.jpg"><h2>Pants</h2><p>₹999</p><button onclick="addToCart('Pants',999)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Socks.jpg"><h2>Socks</h2><p>₹99</p><button onclick="addToCart('Socks',99)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Shortd.jpg"><h2>Shorts</h2><p>₹299</p><button onclick="addToCart('Shorts',299)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Polos.jpg"><h2>Polos</h2><p>₹349</p><button onclick="addToCart('Polos',299)">Add to Cart</button></div>
-
-    </div>
-</section>
-
-<!-- WOMEN SECTION -->
-<section id="womens">
-    <h2 class="category-title">Women Collection</h2>
-    <div class="products">
-
-        <div class="product"><img src="images/Kurta.jpg"><h2>Kurta</h2><p>₹799</p><button onclick="addToCart('Kurta',799)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Jeans.jpg"><h2>Jeans</h2><p>₹1199</p><button onclick="addToCart('Jeans',1199)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Jewellery Set.jpg"><h2>Jewelry Set</h2><p>₹1499</p><button onclick="addToCart('Jewelry Set',1499)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Jacket.jpg"><h2>Jacket</h2><p>₹1799</p><button onclick="addToCart('Jacket',1799)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Flip Flops.jpg"><h2>Flip Flops</h2><p>₹199</p><button onclick="addToCart('Flip Flops',199)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Sweater.jpg"><h2>Sweater</h2><p>₹759</p><button onclick="addToCart('Sweater',759)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Heels.jpg"><h2>Heels</h2><p>₹899</p><button onclick="addToCart('Heels',899)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Skirt.jpg"><h2>Skirt</h2><p>₹1199</p><button onclick="addToCart('Skirt',1199)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Girly-T.jpg"><h2>T-shirts</h2><p>₹299</p><button onclick="addToCart('Girly-T',299)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Bodycon.jpg"><h2>Bodycon</h2><p>₹899</p><button onclick="addToCart('Bodycon',899)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Crop Top.jpg"><h2>Crop Top</h2><p>₹599</p><button onclick="addToCart('Crop Top',599)">Add to Cart</button></div>
-
-        <div class="product"><img src="images/Dress.jpg"><h2>Dress</h2><p>₹1499</p><button onclick="addToCart('Dress',1499)">Add to Cart</button></div>
-
-    </div>
-</section>
-
-<!-- CART -->
-<section id="cart-section" class="cart-section">
-    <h2>Your Cart</h2>
-    <ul id="cart"></ul>
-    <h3>Total: ₹<span id="total">0</span></h3>
-    <button class="checkout-btn" onclick="showPayment()">Checkout</button>
-</section>
-
-<!-- PAYMENT -->
-<section id="payment-section" class="payment-section">
-    <h2>Choose Payment Method</h2>
-
-    <form onsubmit="completePayment(event)">
-        <select id="paymentMethod" required>
-            <option value="">Select Payment Method</option>
-            <option value="card">Debit / Credit Card</option>
-            <option value="upi">UPI Payment</option>
-            <option value="cod">Cash On Delivery</option>
-        </select>
-
-        <input type="text" placeholder="Card / UPI Details (if applicable)">
-        <button type="submit">Confirm Order</button>
-    </form>
-</section>
-<section id="feedback-section" class="feedback-section">
-    <h2>We Value Your Feedback</h2>
-
-    <form onsubmit="submitFeedback(event)">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Write your feedback..." rows="4" required></textarea>
-        <button type="submit">Submit Feedback</button>
-    </form>
-</section>
-<footer class="footer">
-    <div class="footer-container">
-
-        <div>
-            <h3>Contact Us</h3>
-            <p>📞 +91 9876543210</p>
-            <p>📧 support@evolvefit.com</p>
-        </div>
-
-        <div>
-            <h3>Store Address</h3>
-            <p>📍 EVOLVEFIT Store</p>
-            <p>123 Fitness Street</p>
-            <p>Chennai, Tamil Nadu, India</p>
-        </div>
-
-    </div>
-
-    <p class="footer-bottom">© 2026 EVOLVEFIT. All Rights Reserved.</p>
-</footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>
