@@ -13,18 +13,15 @@ updateCartCount();
 // ADD TO CART
 function addToCart(name, price){
 
-let cart = getCart();
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-cart.push({
-name: name,
-price: price
-});
+cart.push({name:name, price:price});
 
-saveCart(cart);
-showNotification();
+localStorage.setItem("cart", JSON.stringify(cart));
+
+showCartNotification(name);   // shows the notification
 
 }
-
 // BUY NOW
 function buyNow(name, price){
 
@@ -98,17 +95,18 @@ countElement.textContent = cart.length;
 }
 
 // CART NOTIFICATION
-function showNotification(){
+function showCartNotification(product){
 
-const note = document.getElementById("cartNotification");
+let notification = document.getElementById("cartNotification");
+let text = document.getElementById("cartText");
 
-if(!note) return;
+text.innerText = product + " added to cart";
 
-note.style.display = "block";
+notification.classList.add("show");
 
 setTimeout(()=>{
-note.style.display = "none";
-},2000);
+notification.classList.remove("show");
+},3000);
 
 }
 
@@ -172,6 +170,7 @@ updateCart();
 updateCartCount();
 
 });
+
 
 
 
