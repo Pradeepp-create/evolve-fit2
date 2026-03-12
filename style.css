@@ -593,7 +593,7 @@ transform:rotate(-45deg) translate(6px,-6px);
 
 .dropdown-menu{
 position:absolute;
-top:70px;
+top:80px;
 right:60px;
 
 background:#22002a;
@@ -608,10 +608,12 @@ overflow:hidden;
 }
 
 .dropdown-menu a{
-padding:14px;
-text-decoration:none;
+display:block;
+padding:15px;
 color:white;
+text-decoration:none;
 border-bottom:1px solid #333;
+transition:0.3s;
 }
 
 .dropdown-menu a:hover{
@@ -621,8 +623,7 @@ background:#ff00cc;
 .menu-open{
 display:flex;
 }
-body{
-padding-top:80px;
+header.navbar{
+position:relative;
 }
-
 
