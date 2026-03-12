@@ -1,11 +1,14 @@
-// GET CART FROM STORAGE
+// GLOBAL CART
+let cart = [];
+
+// GET CART
 function getCart(){
-return JSON.parse(localStorage.getItem("cart")) || [];
+return cart;
 }
 
 // SAVE CART
-function saveCart(cart){
-localStorage.setItem("cart", JSON.stringify(cart));
+function saveCart(newCart){
+cart = newCart;
 updateCart();
 updateCartCount();
 }
@@ -13,24 +16,23 @@ updateCartCount();
 // ADD TO CART
 function addToCart(name, price){
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.push({
+name:name,
+price:price
+});
 
-cart.push({name:name, price:price});
-
-localStorage.setItem("cart", JSON.stringify(cart));
-
-showCartNotification(name);   // shows the notification
+updateCartCount();
+showCartNotification(name);
 
 }
+
 // BUY NOW
 function buyNow(name, price){
 
-let cart = [{
-name: name,
-price: price
+cart = [{
+name:name,
+price:price
 }];
-
-saveCart(cart);
 
 window.location.href = "payment.html";
 
@@ -39,18 +41,15 @@ window.location.href = "payment.html";
 // REMOVE ITEM
 function removeItem(index){
 
-let cart = getCart();
-
 cart.splice(index,1);
 
-saveCart(cart);
+updateCart();
+updateCartCount();
 
 }
 
 // UPDATE CART PAGE
 function updateCart(){
-
-let cart = getCart();
 
 const cartList = document.getElementById("cart");
 const totalDisplay = document.getElementById("total");
@@ -67,9 +66,10 @@ let li = document.createElement("li");
 
 total += item.price;
 
-li.innerHTML =
-`${item.name} - ₹${item.price}
-<button onclick="removeItem(${index})">Remove</button>`;
+li.innerHTML = `
+${item.name} - ₹${item.price}
+<button onclick="removeItem(${index})">Remove</button>
+`;
 
 cartList.appendChild(li);
 
@@ -83,8 +83,6 @@ totalDisplay.innerText = total;
 
 // UPDATE CART COUNT
 function updateCartCount(){
-
-let cart = getCart();
 
 let countElement = document.getElementById("cartCount");
 
@@ -110,6 +108,7 @@ notification.classList.remove("show");
 
 }
 
+// FEEDBACK
 function submitFeedback(e){
 
 e.preventDefault();
@@ -120,18 +119,22 @@ e.target.reset();
 
 }
 
+// PAYMENT
 function completePayment(e){
 
 e.preventDefault();
 
 alert("Order placed successfully 🎉");
 
-localStorage.removeItem("cart");
+cart = [];
 
 updateCartCount();
 
 window.location.href="index.html";
+
 }
+
+// MOBILE MENU
 function toggleMenu(){
 
 const menu = document.getElementById("menu");
@@ -163,21 +166,10 @@ slides[index].classList.add("active");
 
 setInterval(changeSlide,4000);
 
-// RUN AFTER PAGE LOAD
+// PAGE LOAD
 document.addEventListener("DOMContentLoaded", function(){
 
 updateCart();
 updateCartCount();
 
 });
-
-
-
-
-
-
-
-
-
-
-
