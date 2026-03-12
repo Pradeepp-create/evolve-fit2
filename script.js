@@ -144,25 +144,7 @@ burger.classList.toggle("active");
 
 }
 
-function searchProducts(){
 
-let input = document.getElementById("searchBar").value.toLowerCase();
-
-let products = document.querySelectorAll(".product");
-
-products.forEach(function(product){
-
-let title = product.querySelector("h2").innerText.toLowerCase();
-
-if(title.includes(input)){
-product.style.display = "block";
-}else{
-product.style.display = "none";
-}
-
-});
-
-}
 
 // RUN AFTER PAGE LOAD
 document.addEventListener("DOMContentLoaded", function(){
@@ -171,6 +153,7 @@ updateCart();
 updateCartCount();
 
 });
+
 
 
 
