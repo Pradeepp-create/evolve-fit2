@@ -1,55 +1,64 @@
-// GLOBAL CART
-let cart = [];
+/* ---------------- CART STORAGE ---------------- */
 
-// GET CART
 function getCart(){
-return cart;
+return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
-// SAVE CART
-function saveCart(newCart){
-cart = newCart;
+function saveCart(cart){
+localStorage.setItem("cart", JSON.stringify(cart));
 updateCart();
 updateCartCount();
 }
 
-// ADD TO CART
+/* ---------------- ADD TO CART ---------------- */
+
 function addToCart(name, price){
 
+let cart = getCart();
+
 cart.push({
-name:name,
-price:price
+name: name,
+price: price
 });
 
-updateCartCount();
+saveCart(cart);
+
 showCartNotification(name);
 
 }
 
-// BUY NOW
+/* ---------------- BUY NOW ---------------- */
+
 function buyNow(name, price){
 
-cart = [{
-name:name,
-price:price
+let cart = [{
+name: name,
+price: price
 }];
+
+saveCart(cart);
 
 window.location.href = "payment.html";
 
 }
 
-// REMOVE ITEM
+/* ---------------- REMOVE ITEM ---------------- */
+
 function removeItem(index){
+
+let cart = getCart();
 
 cart.splice(index,1);
 
-updateCart();
-updateCartCount();
+saveCart(cart);
 
 }
 
-// UPDATE CART PAGE
+/* ---------------- UPDATE CART PAGE ---------------- */
+
 function updateCart(){
+
+let cart = getCart();
 
 const cartList = document.getElementById("cart");
 const totalDisplay = document.getElementById("total");
@@ -81,8 +90,11 @@ totalDisplay.innerText = total;
 
 }
 
-// UPDATE CART COUNT
+/* ---------------- CART COUNT ---------------- */
+
 function updateCartCount(){
+
+let cart = getCart();
 
 let countElement = document.getElementById("cartCount");
 
@@ -92,11 +104,14 @@ countElement.textContent = cart.length;
 
 }
 
-// CART NOTIFICATION
+/* ---------------- CART NOTIFICATION ---------------- */
+
 function showCartNotification(product){
 
 let notification = document.getElementById("cartNotification");
 let text = document.getElementById("cartText");
+
+if(!notification) return;
 
 text.innerText = product + " added to cart";
 
@@ -108,7 +123,8 @@ notification.classList.remove("show");
 
 }
 
-// FEEDBACK
+/* ---------------- FEEDBACK ---------------- */
+
 function submitFeedback(e){
 
 e.preventDefault();
@@ -119,22 +135,24 @@ e.target.reset();
 
 }
 
-// PAYMENT
+/* ---------------- PAYMENT ---------------- */
+
 function completePayment(e){
 
 e.preventDefault();
 
 alert("Order placed successfully 🎉");
 
-cart = [];
+localStorage.removeItem("cart");
 
 updateCartCount();
 
-window.location.href="index.html";
+window.location.href = "index.html";
 
 }
 
-// MOBILE MENU
+/* ---------------- MOBILE MENU ---------------- */
+
 function toggleMenu(){
 
 const menu = document.getElementById("menu");
@@ -145,12 +163,14 @@ burger.classList.toggle("active");
 
 }
 
-// HERO SLIDER
+/* ---------------- HERO SLIDER ---------------- */
 
 let slides = document.querySelectorAll(".slide");
 let index = 0;
 
 function changeSlide(){
+
+if(slides.length === 0) return;
 
 slides[index].classList.remove("active");
 
@@ -166,7 +186,8 @@ slides[index].classList.add("active");
 
 setInterval(changeSlide,4000);
 
-// PAGE LOAD
+/* ---------------- PAGE LOAD ---------------- */
+
 document.addEventListener("DOMContentLoaded", function(){
 
 updateCart();
